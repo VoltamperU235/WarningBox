@@ -172,7 +172,7 @@ void loop() {
         }
       }
 
-      DEBUG_BLINK(5, 1, 1000, BLUE);
+      DEBUG_BLINK(2, 1, 250, BLUE);
       mqtt.loop();
       break;
     case 4:
@@ -217,7 +217,7 @@ void ENABLE_COMUNICATION()
     mySerial.println(F("GSM"));      //Mostrara un mensaje cuando de haya conectado a la red.
 
   }
-  DEBUG_BLINK(1, 1, 500, GREEN);
+  DEBUG_BLINK(1, 1, 250, GREEN);
   if (!modem.gprsConnect(apn, user, pass))
   {
     mySerial.println("F");
@@ -226,7 +226,7 @@ void ENABLE_COMUNICATION()
   {
     mySerial.println(F("2G!"));
   }
-  DEBUG_BLINK(1, 2, 500, GREEN);
+  DEBUG_BLINK(1, 2, 250, GREEN);
   mqtt.setServer(broker, 1883);
   mqtt.setCallback(mqttCallback);
   long int time = millis();
@@ -251,7 +251,7 @@ void ENABLE_COMUNICATION()
   {
     software_reset();
   }
-  DEBUG_BLINK(1, 3, 500, GREEN);
+  DEBUG_BLINK(1, 3, 250, GREEN);
 }
 
 void software_reset() // Restarts program from beginning but does not reset the peripherals and registers
@@ -359,7 +359,7 @@ void mqttCallback(char* topic, byte* payload, unsigned int len) {
     ESTATE = 1;
     DATE_PENDING = LOW;
     RST_COUNT = 0;
-    DEBUG_BLINK(4, 1, 500, GREEN);
+    DEBUG_BLINK(1, 4, 250, GREEN);
     ALARMS();
   }
 }
